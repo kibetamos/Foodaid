@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\VulnerableController;
-use App\Http\Controllers\TestController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,13 +11,13 @@ use App\Http\Controllers\TestController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/testing',function(){
-	return 'just for test';
-})
-Route::get('/new', function () {
-    return 'welcome';
+//Route::get('/testing',function(){
+//	return 'just for test';
+
+Route::get('/', function () {
+    return view('welcome');
 });
-/*
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
@@ -36,16 +34,11 @@ Route::get('donate', function () {
 Route::get('/CreateAgency', function () {
    return view('CreateAgency');
   });
-Route::get('/nicehome', function () {
-   return view('nicehome');
+
+Route::get('/vulnerable', function () {
+   return view('vulnerable');
   });
 
-
-//Route::get('/vulnerable', function () {
-   //return view('vulnerable');
-  });
-
-Route::get('/test',[TestController::class,'testVul']);
 //FOR DONATION
 
 Route::get('/donation', 'App\Http\Controllers\donationController@create')->name('donation');
@@ -76,9 +69,6 @@ Route::post('/edit', 'App\Http\Controllers\AgencyController@update');
 Route::delete('/delete/Agency/{id}','App\Http\Controllers\AgencyController@destroy');
 
 //For Vulnerable 
-//Route::resource('Vulnerable', 'App\Http\Controllers\VulnerableController');
+Route::resource('Vulnerable', 'App\Http\Controllers\VulnerableController');
 //Route::resource('vulnerables', 'App\Http\Controllers\VulnerableController');
 //Route::post('/CreateVulnerable', 'App\Http\Controllers\VulnerableController@store')->name('Vulnerable.store');
-
-
-*/
