@@ -18,7 +18,7 @@ class CreateVulnerablesTable extends Migration
             $table->string ('vulnerable_name');
              $table->string ('vulnerable_phone'); 
              $table->string ('vulnerable_location');
-              $table->string ('vulnerable_income');
+              $table->string ('vulnerable_income')->nullable();
                $table->string ('vulnerable_family');
                 $table->string ('vulnerable_status'); 
             $table->timestamps();

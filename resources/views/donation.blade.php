@@ -35,12 +35,11 @@
             
             <tr>
                 <td>{{ $donation->id }}</td>
-
                 <td>{{ $donation->donor_name }}</td>
                 <td>{{ $donation->donor_mail }}</td>
                 <td>{{ $donation->donor_phone }}</td>
                  <td>{{ $donation->donor_location }}</td>
-                <td>{{$donation->food_name }}</td>
+                <td>{{ $donation->food_name }}</td>
                 <td>{{ $donation->food_amount }}</td>
                 <td>{{ $donation->food_description }}</td>
                
@@ -53,7 +52,8 @@
                     </form>
                 </td>
             </tr>
-            @endforeach          
+            @endforeach 
+                     
         </tbody>
     </table>
     @if(!empty(Session::get('success')))

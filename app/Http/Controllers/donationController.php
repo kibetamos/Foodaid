@@ -24,6 +24,7 @@ class donationController extends Controller
         $donations = Donation::with('donation')->orderBy('id')->get();
 
         return view('donation');//->with('donations', $donations);
+        
     }
 
     /**
@@ -93,7 +94,7 @@ class donationController extends Controller
         public function edit ($id)
         {
         //
-         $donation = Donation::find($id);
+          $donation = Donation::find($id);
        return view('donationEdit', compact('donation'));
     }
     
@@ -128,7 +129,7 @@ class donationController extends Controller
         $donation->food_amount = $request->get('food_amount');
         $donation->food_description = $request->get('food_description'); 
 
-         $donation->save();
+         $donation->save($request->all());
           
       return redirect('/donation')->with('success', 'Successfully updated your donation!');
     }

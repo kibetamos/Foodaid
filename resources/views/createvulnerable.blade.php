@@ -1,3 +1,4 @@
+
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 
@@ -77,7 +78,7 @@ input[type=submit] {
 <div class="row">
  <div class="col-sm-8 offset-sm-2">
   <section>
-    <h1 class="display-3">Add Agency</h1>
+    <h1 class="display-3">Create Vulnerable</h1>
     </section>
   <div>
     @if ($errors->any())
@@ -89,27 +90,34 @@ input[type=submit] {
         </ul>
       </div><br/>
     @endif
-
-      <form action="{{url('/CreateAgency') }}" method="POST">
+      <form action="{{url('createvulnerable') }}" method="POST">
           @csrf
           <div class="form-group">    
-              <label for="first_name">Agency Name:</label>
-              <input type="text" class="form-control" name="agency_name"/>
+              <label for="vulnerable_name">Vulnerable Name:</label>
+              <input type="text" class="form-control" name="vulnerable_name"/>
           </div>
 
           <div class="form-group">
-              <label for="last_name">Agency Mail:</label>
-              <input type="text" class="form-control" name="agency_mail"/>
+              <label for="last_name">Vulnerable Phone:</label>
+              <input type="text" class="form-control" name="vulnerable_phone"/>
           </div>
           <div class="form-group">
-              <label for="email">Agency Phone:</label>
-              <input type="text" class="form-control" name="agency_phone"/>
+              <label for="email">Vulnerable Location:</label>
+              <input type="text" class="form-control" name="vulnerable_location"/>
           </div>
           <div class="form-group">
-              <label for="city">Agency Location:</label>
-              <input type="text" class="form-control" name="agency_location"/>
+              <label for="vulnerable income">Vulnerable Income:</label>
+              <input type="text" class="form-control" name="vulnerable_income"/>
+          </div>
+          <div class="form-group">
+              <label for="city">Vulnerable Family:</label>
+              <input type="text" class="form-control" name="vulnerable_family"/>
+          </div> 
+           <div class="form-group">
+              <label for="city">Vulnerable Status:</label>
+              <input type="text" class="form-control" name="vulnerable_status"/>
           </div>                         
-          <button type="submit" class="btn btn-primary-outline">Add Agency</button>
+          <button type="submit" class="btn btn-primary-outline">Add Vulnerable</button>
       </form>
   </div>
 </div>

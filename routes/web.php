@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,32 +15,46 @@ use Illuminate\Support\Facades\Route;
 //Route::get('/testing',function(){
 //	return 'just for test';
 
-Route::get('/', function () {
+Auth::routes();
+
+Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
+Route::get('admin/home', 'App\Http\Controllers\HomeController@handleAdmin')->name('admin.route')->middleware('admin');
+Route::get('admin/donation', 'App\Http\Controllers\donationController@index')->name('donation.route');
+Route::get('admin/vulnerable', 'App\Http\Controllers\VulnerableController@index')->name(' Vulnerable.route');
+
+Route::get('admin/show', 'App\Http\Controllers\AgencyController@index')->name('Agency.route');
+//Route::get('admin/donation', 'App\Http\Controllers\donationController@index')->name('donation.route');
+Route::get('/welcome', function () {
     return view('welcome');
+});
+Route::get('/homepage', function () {
+    return view('homepage');
+});
+Route::get('/picked', function () {
+    return view('picked');
 });
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dash');
-Route::get('home', function () {
+Route::get('/', function () {
     return view('home');
 });
 Route::get('about', function () {
     return view('about');
 });
-Route::get('donate', function () {
-    return view('donateCreate');
-});
+
 Route::get('/CreateAgency', function () {
    return view('CreateAgency');
   });
 
-Route::get('/vulnerable', function () {
-   return view('vulnerable');
+Route::get('/CreateVulnerable', function () {
+   return view('CreateVulnerable');
   });
 
 //FOR DONATION
+
 
 Route::get('/donation', 'App\Http\Controllers\donationController@create')->name('donation');
 
@@ -47,9 +62,9 @@ Route::post('/donateCreate', 'App\Http\Controllers\donationController@store')->n
 
 Route::view('/donateCreate', 'donateCreate')->middleware('auth');
 
-Route::get('/edit/{id}','App\Http\Controllers\donationController@edit');
+Route::get('/edit/donation/{id}','App\Http\Controllers\donationController@edit');
 
-Route::post('/donationEdit', 'App\Http\Controllers\donationController@update');
+Route::post('/edit/donation/{id}', 'App\Http\Controllers\donationController@update');
 
 Route::delete('/delete/donation/{id}','App\Http\Controllers\donationController@destroy');
 
@@ -62,13 +77,41 @@ Route::post('/CreateAgency', 'App\Http\Controllers\AgencyController@store')->nam
 
 //Route::view('/donateCreate', 'donateCreate')->middleware('auth');
 
-Route::get('/edit/{id}','App\Http\Controllers\AgencyController@edit');
+Route::get('/edit/Agency/{id}','App\Http\Controllers\AgencyController@edit');
 
-Route::post('/edit', 'App\Http\Controllers\AgencyController@update');
+Route::post('/edit/Agency/{id}', 'App\Http\Controllers\AgencyController@update');
 
 Route::delete('/delete/Agency/{id}','App\Http\Controllers\AgencyController@destroy');
 
 //For Vulnerable 
-Route::resource('Vulnerable', 'App\Http\Controllers\VulnerableController');
-//Route::resource('vulnerables', 'App\Http\Controllers\VulnerableController');
-//Route::post('/CreateVulnerable', 'App\Http\Controllers\VulnerableController@store')->name('Vulnerable.store');
+
+Route::resource('vulnerables', 'App\Http\Controllers\VulnerableController');
+Route::get('vulnerable', 'App\Http\Controllers\VulnerableController@create')->name('vulnerable');
+
+Route::post('/createvulnerable', 'App\Http\Controllers\VulnerableController@store')->name('Vulnerable.store');
+Route::get('/edit/Vulnerable/{id}','App\Http\Controllers\VulnerableController@edit');
+
+Route::post('/edit/Vulnerable/{id}', 'App\Http\Controllers\VulnerableController@update');
+
+Route::delete('/delete/Vulnerable/{id}','App\Http\Controllers\VulnerableController@destroy');
+
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+//FOR PICK DONATION
+
+Route::get('/pickdonation', 'App\Http\Controllers\pickdonationController@create');
+
+Route::get('picked', 'App\Http\Controllers\pickdonationController@show');
+
+Route::post('picked', function() {
+  dd(request()->all());
+})->name('post');

@@ -1,11 +1,18 @@
-<!-- resources/views/dashboard/reservationEdit.blade.php -->
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 @extends('index')
-@section('title', 'Donation')
+@section('title', 'Edit Donation')
 @section('content')
 <style type="text/css">
   /* Style inputs, select elements and textareas */
 input[type=text], select, textarea{
-  width: 70%;
+  width: 140%;
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -65,7 +72,11 @@ input[type=submit] {
     margin-top: 0;
   }
 }  
+body{
+  background-color: skyblue;
+}
 </style>
+<body>
 <div class="row">
     <div class="col-sm-8 offset-sm-2">
         <h1 class="display-3">Edit Donation</h1>
@@ -140,10 +151,8 @@ input[type=submit] {
        <div class="form-group">
             <div class="form-group">
                 <label for="end">Food description:</label>
-                <input type="text" class="form-control" name="food_amount"value={{$donation->food_description}}>
-                    <div class="col-75">
-        <textarea id="food_description" name="food_description" placeholder="Food Description.." style="height:100px"></textarea>
-      </div>
+                <input type="text" class="form-control" name="food_description"value={{$donation->food_description}}>
+            
             </div>
         
         </div>
@@ -160,3 +169,4 @@ input[type=submit] {
 @endsection
          
        
+</body>

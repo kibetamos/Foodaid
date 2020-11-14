@@ -24,10 +24,10 @@ class VulnerableController extends Controller
 
         $vulnerableInfo = vulnerable::with('vulnerables');
         $data= Vulnerable::all();
-        return view('show',['vulnerables' =>$data]);
+        return view('vulnerable',['vulnerables' =>$data]);
         $agencies = Vulnerable::with('vulnerable')->orderBy('id')->get();
 
-        return view('/show');
+        return view('vulnerable');
 }
     /**
      * Show the form fo. creating a new resource.
@@ -41,10 +41,10 @@ class VulnerableController extends Controller
         //$data= Agency::all();
         //return view('show',['agencies' =>$data])->with('agencies', $data);
         //
-        //$vulnerableInfo = Vulnerable::with('vulnerables');
-       //$data= Vulnerable::all();
+        $vulnerableInfo = vulnerable::with('vulnerables');
+       $data= Vulnerable::all();
         //return view('/show');
-        return view('vulnerable');
+        return view('vulnerable',['vulnerables' =>$data])->with('vulnerables', $data);
         
     }
 
@@ -62,11 +62,12 @@ class VulnerableController extends Controller
             'vulnerable_name' => $request->vulnerable_name,
             'vulnerable_phone' => $request->vulnerable_phone,
             'vulnerable_location' => $request->vulnerable_location,
-            'vulenerable_family' => $request->vulenerable_family,
-            'vulenerable_status' => $request->vulenerable_status,
+            'vulnerable_income' => $request->vulnerable_income,
+            'vulnerable_family' => $request->vulnerable_family,
+            'vulnerable_status' => $request->vulnerable_status,
         ]);
 
-        return redirect('/show')->with('success', 'Agency saved!');
+        return redirect('/vulnerable')->with('success', 'Agency saved!');
             
     }
 
@@ -95,7 +96,7 @@ class VulnerableController extends Controller
     {
         //
         $vulnerable = Vulnerable::find($id);
-        return view('edit', compact('agency')); 
+        return view('vulnerableEdit', compact('vulnerable')); 
     }
 
     /**
@@ -109,22 +110,25 @@ class VulnerableController extends Controller
     {
         //
         $request->validate([
-       'vulnerable_name'=>'required',
-       'vulnerable_phone'=>'required',
-       'vulnerable_family'=>'required',
-        'vulnerable_status'=>'required',
-       
+     'vulnerable_name' =>'required',
+            'vulnerable_phone' => 'required',
+            'vulnerable_location' => 'required',
+            'vulnerable_income' => 'required',
+            'vulnerable_family' => 'required',
+            'vulnerable_status' => 'required',
    ]);
 
          $vulnerable = Vulnerable::find($id);
             $vulnerable->vulnerable_name = $request->get('vulnerable_name');
             $vulnerable->vulnerable_phone = $request->get('vulnerable_phone');
+            $vulnerable->vulnerable_location = $request->get('vulnerable_location');
+            $vulnerable->vulnerable_income = $request->get('vulnerable_income');
             $vulnerable->vulnerable_family = $request->get('vulnerable_family');
             $vulnerable->vulnerable_status = $request->get('vulnerable_status');
     
         
-           $avulnerable->save($request->all());
-        return redirect('/show')->with('success', 'Successfully updated your Agency');
+           $vulnerable->save($request->all());
+        return redirect('/vulnerable')->with('success', 'Successfully updated your Agency');
 
           // $agency->save();
 
@@ -142,6 +146,6 @@ class VulnerableController extends Controller
         //
          $vulnerable = Vulnerable::find($id);
         $vulnerable->delete();
-        return redirect('show')->with('success', 'Agency deleted!');
+        return redirect('vulnerable')->with('success', 'Agency deleted!');
     }
 }

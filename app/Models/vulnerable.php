@@ -12,12 +12,12 @@ class vulnerable extends Model
 'vulnerable_name',
 'vulnerable_phone',
 'vulnerable_location',
-'vulenerable_income',
-'vulenerable_family',
-'vulenerable_status',
+'vulnerable_income',
+'vulnerable_family',
+'vulnerable_status',
     ];
 
-    public function donation() {
+    public function vulnerable() {
         return $this->belongsTo('App\Models\vulnerable');
     }
 }
