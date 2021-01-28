@@ -12,6 +12,7 @@
         }
     </style>
     <body>
+        <a href="homepage" class="btn btn-default">Back</a>
     <h2>Your Donation</h2>
     <table class="table mt-3">
         <thead>
@@ -49,6 +50,7 @@
                     {{csrf_field()}}
                     <input name="_method" type="hidden" value="DELETE">
                     <button class="btn btn-danger" type="submit">Delete</button>
+
                     </form>
                 </td>
             </tr>

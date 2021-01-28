@@ -13,7 +13,7 @@ class pickdonationController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */
+     */ 
     public function index()
     {
         //
@@ -23,7 +23,7 @@ class pickdonationController extends Controller
         return view('pickdonation',['donations' =>$data]);
         $donations = Donation::with('donation')->orderBy('id')->get();
 
-        return view('pickdonation');//->with('donations', $donations);
+        return view('admin/pickdonation');//->with('donations', $donations);
         
     }
 
@@ -37,8 +37,10 @@ class pickdonationController extends Controller
         //
         $donationInfo = donation::with('donations');
         $data= Donation::all();
-        return view('pickdonation',['donations' =>$data])->with('donations', $data);
-        //return view('/donation');
+        return view('pickdonation',['donations' =>$data]);
+        $donations = Donation::with('donation')->orderBy('id')->get();
+
+        return view('admin/pickdonation');//->with('donations', $donations);
 // This is where ive stopped for today ,,,,,*******
 
     }
@@ -149,4 +151,9 @@ class pickdonationController extends Controller
 
       return redirect('/donation')->with('success', 'Successfully deleted your reservation!');
     }
+
+    // public function getPicked(Request $request){
+      //  dd($request->all());
+     //}
+
 }

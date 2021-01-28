@@ -29,30 +29,32 @@ Route::get('/welcome', function () {
 });
 Route::get('/homepage', function () {
     return view('homepage');
-});
-Route::get('/picked', function () {
-    return view('picked');
-});
 
-
+});
+Route::get('admin/reports', function () {
+    return view('reports');
+    
+});
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dash');
 Route::get('/', function () {
-    return view('home');
+    return view('homepage');
 });
 Route::get('about', function () {
     return view('about');
 });
 
-Route::get('/CreateAgency', function () {
+Route::get('/admin/CreateAgency', function () {
    return view('CreateAgency');
   });
 
-Route::get('/CreateVulnerable', function () {
+Route::get('/admin/CreateVulnerable', function () {
    return view('CreateVulnerable');
   });
-
+  Route::get('/admin/pickdonation', function () {
+    return view('pickdonation');
+   });
 //FOR DONATION
 
 
@@ -108,10 +110,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //FOR PICK DONATION
 
-Route::get('/pickdonation', 'App\Http\Controllers\pickdonationController@create');
+Route::get('/admin/pickdonation', 'App\Http\Controllers\pickdonationController@create');
 
-Route::get('picked', 'App\Http\Controllers\pickdonationController@show');
+//Route::get('pickeddonation', 'App\Http\Controllers\pickdonationController@show');
 
-Route::post('picked', function() {
-  dd(request()->all());
-})->name('post');
+;
+

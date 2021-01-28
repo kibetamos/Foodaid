@@ -147,6 +147,6 @@ class donationController extends Controller
         $donation = Donation::find($id);
       $donation->delete(); 
 
-      return redirect('/donation')->with('success', 'Successfully deleted your reservation!');
+      return redirect('/donation')->with('success', 'Successfully deleted your donation!');
     }
 }

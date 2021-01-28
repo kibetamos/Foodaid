@@ -16,6 +16,7 @@ class CreateVulnerablesTable extends Migration
         Schema::create('vulnerables', function (Blueprint $table) {
             $table->id();
             $table->string ('vulnerable_name');
+           
              $table->string ('vulnerable_phone'); 
              $table->string ('vulnerable_location');
               $table->string ('vulnerable_income')->nullable();

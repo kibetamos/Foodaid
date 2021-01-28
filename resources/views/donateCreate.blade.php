@@ -86,15 +86,15 @@ body{
         <label for="fname">Donor Name</label>
       </div>
       <div class="col-75">
-        <input type="text" id="donor_name" name="donor_name" placeholder="Your name..">
+        <input type="text" id="donor_name" name="donor_name" placeholder="Your name.." required>
       </div>
     </div>
     <div class="row">
       <div class="col-25">
-        <label for="donor_mail">Email</label>
+        <label for="donor_mail" required>Email</label>
       </div>
       <div class="col-75">
-        <input type="text" id="donor_mail" name="donor_mail" placeholder="Email..">
+        <input type="text" id="donor_mail" name="donor_mail" placeholder="Email.." required>
       </div>
     </div>
      <div class="row">
@@ -102,7 +102,7 @@ body{
         <label for="lname">Phone no.</label>
       </div>
       <div class="col-75">
-        <input type="text" id="donor_phone" name="donor_phone" placeholder="phone number..">
+        <input type="text" id="donor_phone" name="donor_phone" placeholder="phone number.." required>
       </div>
     </div>
      <div class="row">
@@ -110,7 +110,7 @@ body{
         <label for="lname">Location</label>
       </div>
       <div class="col-75">
-        <input type="text" id="donor_location" name="donor_location" placeholder="Location..">
+        <input type="text" id="donor_location" name="donor_location" placeholder="Location.." required>
       </div>
     </div>
     
@@ -119,7 +119,7 @@ body{
         <label for="lname">Food name</label>
       </div>
       <div class="col-75">
-        <input type="text" id="food_name" name="food_name" placeholder="Food name..">
+        <input type="text" id="food_name" name="food_name" placeholder="Food name.." required>
       </div>
     </div>
     <div class="row">
@@ -127,7 +127,7 @@ body{
         <label for="lname">Food Amount</label>
       </div>
       <div class="col-75">
-        <input type="text" id="food_amount" name="food_amount" placeholder="Food amount..">
+        <input type="text" id="food_amount" name="food_amount" placeholder="Food amount.." required>
       </div>
     </div>
      <div class="row">
@@ -135,11 +135,18 @@ body{
         <label for="subject">Food description</label>
       </div>
       <div class="col-75">
-        <textarea id="food_description" name="food_description" placeholder="Food Description.." style="height:100px"></textarea>
+        <textarea id="food_description" name="food_description" placeholder="Food Description.." style="height:100px" required></textarea>
       </div>
     </div>
     <div class="row">
       <input type="submit" value="Donate">
+    </div>
+    <div class="row">
+      <a href="homepage" class="previous">&laquo; Previous</a>
+<a href="donation" class="next">Next &raquo;</a>
+
+<a href="#" class="previous round">&#8249;</a>
+<a href="#" class="next round">&#8250;</a>
     </div>
   </form>
 </div>
