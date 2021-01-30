@@ -36,9 +36,6 @@
                          <td>{{$user->amount_paid}}</td>
                          <td>@if($user->status == 'Active') <span class="label label-danger">Active</span>
                           @else<span class="label label-success">Closed</span> @endif</td>
-                 
-                   
-                 
                       </tr>
                   @endforeach
                   @endif
